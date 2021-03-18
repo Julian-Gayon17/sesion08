@@ -113,7 +113,7 @@
          scene.add(object);
 
          //MOVER LA CÁMARA
-         camera.position.x = 10;
+         camera.position.x = 5;
          camera.position.y = 10;
          camera.position.z = 10;
          camera.lookAt(origin);
@@ -127,8 +127,19 @@
 
       function render() {
          var dtime = Date.now() - startTime;
-         
          renderer.render(scene, camera);
+      }
+
+      function transTS(s,t){
+         m = new THREE.Matrix4();
+         m.set(
+            s.x , 0   , 0   , t.x * s.x,
+            0   , s.y , 0   , t.y * s.y,
+            0   , 0   , s.z , t.z * s.z,
+            0   , 0   , 0   ,         1
+         )
+
+         object.applyMatrix(m);
       }
    </script>
 </body>
