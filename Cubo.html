@@ -103,11 +103,14 @@
 
          //CREAR LOS OBJETOS
          object1 = new THREE.Mesh(geometry, material);
-         object2 = new THREE.Mesh(geometry, material); //CREO EL SEGUNDO CUBO
+         object2 = new THREE.Mesh(geometry, material);
+         object3 = new THREE.Mesh(geometry, material); //CREO EL TERCER CUBO
          var matriz1 = transTS(3 , new THREE.Vector3(1,1,1)); 
-         var matriz2 = transTS(2 , new THREE.Vector3(1.5,2.75,1.5)); //LO UBICO
+         var matriz2 = transTS(2 , new THREE.Vector3(1.5,2.75,1.5));
+         var matriz3 = transTS(1 , new THREE.Vector3(3,7,3)); //LO UBICO
          object1.applyMatrix(matriz1);
          object2.applyMatrix(matriz2);
+         object3.applyMatrix(matriz3);
 
          //AGREGAR A LA ESCENA
          scene.add(gridHelperXZ);
@@ -116,6 +119,7 @@
          scene.add(arrowZ);
          scene.add(object1);
          scene.add(object2);
+         scene.add(object3);
 
          //MOVER LA CÁMARA
          camera.position.x = 10;
