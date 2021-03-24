@@ -102,21 +102,25 @@
          });
 
          //CREAR LOS OBJETOS
-         object = new THREE.Mesh(geometry, material);
-         var matriz1 = transTS(2 , new THREE.Vector3(1,1,1)); //LLAMO A LA FUNCION Y LA GUARDO EN UNA VARIABLE PARA DESPUES APLICARLE LA MATRIZ AL OBJETO
-         object.applyMatrix(matriz1);
+         object1 = new THREE.Mesh(geometry, material);
+         object2 = new THREE.Mesh(geometry, material); //CREO EL SEGUNDO CUBO
+         var matriz1 = transTS(3 , new THREE.Vector3(1,1,1)); 
+         var matriz2 = transTS(2 , new THREE.Vector3(1.5,2.75,1.5)); //LO UBICO
+         object1.applyMatrix(matriz1);
+         object2.applyMatrix(matriz2);
 
          //AGREGAR A LA ESCENA
          scene.add(gridHelperXZ);
          scene.add(arrowX);
          scene.add(arrowY);
          scene.add(arrowZ);
-         scene.add(object);
+         scene.add(object1);
+         scene.add(object2);
 
          //MOVER LA CÁMARA
-         camera.position.x = 5;
-         camera.position.y = 10;
-         camera.position.z = 10;
+         camera.position.x = 10;
+         camera.position.y = 15;
+         camera.position.z = 20;
          camera.lookAt(origin);
       }
 
