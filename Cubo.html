@@ -64,7 +64,6 @@
          var arrowZ = new THREE.ArrowHelper(z, origin, arrowSize, colorB);
 
          //CREAR LAS GEOMETRÍAS
-         ////var geometry = new THREE.SphereGeometry( 1, 12, 12 );
          var geometry = new THREE.BoxGeometry(1, 1, 1);
 
          for (var i = 0; i < geometry.faces.length; i++) {
@@ -104,6 +103,8 @@
 
          //CREAR LOS OBJETOS
          object = new THREE.Mesh(geometry, material);
+         var matriz1 = transTS(2 , new THREE.Vector3(1,1,1)); //LLAMO A LA FUNCION Y LA GUARDO EN UNA VARIABLE PARA DESPUES APLICARLE LA MATRIZ AL OBJETO
+         object.applyMatrix(matriz1);
 
          //AGREGAR A LA ESCENA
          scene.add(gridHelperXZ);
@@ -130,16 +131,17 @@
          renderer.render(scene, camera);
       }
 
+      //CREO LA MATRIZ DE TRANSFORMACION
       function transTS(s,t){
          m = new THREE.Matrix4();
          m.set(
-            s.x , 0   , 0   , t.x * s.x,
-            0   , s.y , 0   , t.y * s.y,
-            0   , 0   , s.z , t.z * s.z,
+            s , 0   , 0   , t.x * s,
+            0   , s , 0   , t.y * s,
+            0   , 0   , s , t.z * s,
             0   , 0   , 0   ,         1
          )
 
-         object.applyMatrix(m);
+         return m;
       }
    </script>
 </body>
